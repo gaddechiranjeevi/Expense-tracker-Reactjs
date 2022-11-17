@@ -1,0 +1,13 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Product Sans';
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+}
