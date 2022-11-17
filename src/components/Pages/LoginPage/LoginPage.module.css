@@ -1,0 +1,95 @@
+.backgroundDiv{
+    background-image: url('/src/components/background.jpg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+
+}
+
+.maindivtagg{
+    margin-left: 55%;
+   padding-top: 180px;
+}
+
+.mainform{
+    border-style:solid;
+    border-color: rgb(179, 179, 179);
+    width: 300px;
+    height: 400px;
+    text-align: center;
+    padding-top: 3%;
+    background-color: rgb(255, 255, 255);
+
+}
+.inputFulldiv{
+
+    width: 260px;
+    margin-left: 7%;
+    margin-top: 10%;
+    height: 200px;
+}
+.emaildiv{
+    height: 45px;
+    padding-top: 4%;  
+}
+
+
+
+.btnclass{
+    width: 250px;
+    height: 30px;
+    border-radius: .2rem;
+    border-style: solid;
+    border-color: rgb(188, 183, 183);
+    border-width: .3px;
+    font-family: 'Product Sans';
+    color: #001847;
+}
+.btnclass:focus {
+    background-color: #eff4ff;
+    outline: 2px solid #77a2ff;  
+   }
+   .btnclass.visited {
+    background-color: #eff4ff;
+    outline: 2px solid #77a2ff; 
+   }
+
+.submitbtn{
+    background-color: #206af6;
+    margin-top: 10px;
+    width: 220px;
+    height: 37px;
+    border-radius: 2rem;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-family: 'Product Sans';
+}
+.submitbtn:hover{
+    background-color: #0645b8 ;
+    cursor: pointer;
+}
+.changebtn{
+    margin-top: 9%;
+    margin-left: 2%;
+    width: 220px;
+    height: 35px;
+    opacity: 40%;
+    border: solid gray;
+    border-width: 1px;
+    background-color: rgb(200, 253, 200);
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Product Sans';
+}
+.changebtn:hover{
+    opacity: 60%;
+}
+
+.forgotpassword{
+    font-size: 13.5px;
+    color: #206af6;
+    text-decoration: underline;
+}

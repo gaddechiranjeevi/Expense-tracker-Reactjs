@@ -1,0 +1,13 @@
+.WelcomebackgroundDiv{
+    background-image: url('/src/components/background.jpg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+
+}
+.headingh1{
+    height: 500px;
+    width: 800px;
+    text-align: center;
+    padding-top: 200px;
+}

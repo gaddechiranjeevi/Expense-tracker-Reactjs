@@ -1,0 +1,28 @@
+.mainDivv{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.hrelement{
+    opacity: 50%;
+}
+
+.subDivvA{
+
+    width: 150px;
+    margin-left: 500px;
+    margin-top: -23px;
+}
+.subDivvP{
+
+    width: 150px;
+    margin-left: 300px;
+    margin-top: -25px;
+}
+.subDivvH{
+
+    width: 150px;
+    margin-left: 100px;
+    margin-top: 15px;
+    padding-top: 10px;
+}
