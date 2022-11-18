@@ -11,3 +11,24 @@
     text-align: center;
     padding-top: 200px;
 }
+.message{
+    border: solid;
+    border-width: 1px;
+    width: 320px;
+    margin-left: 30%;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 15px;
+    font-weight: lighter;
+    border-radius: .5rem;
+    height: 30px;
+    background-color: rgb(237, 246, 255);
+}
+
+.ComleteNow{
+    color: blue;
+    text-decoration: underline;
+}
+.ComleteNow:hover{
+    cursor: pointer;
+}
