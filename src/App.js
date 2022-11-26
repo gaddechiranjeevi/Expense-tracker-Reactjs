@@ -4,6 +4,7 @@ import UserDetails from './components/Pages/ProfilePage/UserDetails'
 import LoginPage from './components/Pages/LoginPage/LoginPage';
 import Welcome from "./components/Pages/WelcomePage/Welcome";
 import NavBar from './components/Pages/NavBar/NavBar';
+import PasswordReset from './components/Pages/LoginPage/PasswordReset';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
 
       <Route path={'/user'}>
         <UserDetails />
+      </Route>
+      <Route path="/reset">
+        <PasswordReset />
       </Route>
       <Route path='*'>
         <Redirect to='/auth' />

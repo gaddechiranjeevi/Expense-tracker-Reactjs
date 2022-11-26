@@ -105,6 +105,10 @@ const LoginPage = () =>{
     }
 } 
     }
+    const ForgotBtnHandler = (event) => {
+        event.preventDefault();
+        history.replace("/reset");
+    }
 
     return(
         <div  className={classes.backgroundDiv}> 
@@ -126,7 +130,7 @@ const LoginPage = () =>{
                         </div>}
                         <div className={classes.emaildiv}>
                             <button onClick={SignupBtnHandler} className={classes.submitbtn} >{swapCheck? 'Login' : 'SignUp'  }</button><br/>
-                               {swapCheck && <label className={classes.forgotpassword} > Forgot password</label>}
+                               {swapCheck && <label className={classes.forgotpassword} onClick = {ForgotBtnHandler}> Forgot password</label>}
                         </div>
                     </div>
                 </div>
