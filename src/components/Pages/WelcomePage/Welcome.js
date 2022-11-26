@@ -7,8 +7,6 @@ const Welcome = () =>{
 
 
     const autoVerifyEmailCheck = async() =>{
-        const jwttoken = localStorage.getItem('JWTTOKEN');
-
         const token = localStorage.getItem('JWTTOKEN');
 
         try{
@@ -39,7 +37,9 @@ const Welcome = () =>{
         }
     }
 
-useEffect(autoVerifyEmailCheck,[])
+useEffect(()=>{
+    autoVerifyEmailCheck();
+},[])
 
 
     const verifyHandler = async() =>{
@@ -63,6 +63,7 @@ useEffect(autoVerifyEmailCheck,[])
                 const data = await res.json();
                 console.log(data);
                 console.log('Send success');
+                alert('Verification Mail sent');
             }
 
         }catch(err){
@@ -78,9 +79,9 @@ useEffect(autoVerifyEmailCheck,[])
             <div className={classes.message}>
                 <label className={classes.labelText}> Your Profile is Incomplete. <Link to='/user' className={classes.ComleteNow} >Complete Now</Link></label>
             </div>
-            <di>
-                {!checkVerified && <button onClick={verifyHandler} > verify Email</button>}
-            </di>
+            <div className={classes.verifyDiv}>
+                {!checkVerified && <button onClick={verifyHandler} className={classes.verifyBtn}> verify Email</button>}
+            </div>
         </div>
     </div>
     );

@@ -5,40 +5,42 @@ const UserDetails = () => {
     const nameRef = useRef();
     const photoUrlRef = useRef();
 
-    const AutoUpdateData = async() => {
+    const AutoUpdateData=async()=>{
         const token = localStorage.getItem('JWTTOKEN');
         try{
-            const res = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBNKcwJ85YxV00sJT8V4pSH2dMBTCWv77k",
+            const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCrNT0jOFIUrCoslzyrlcZDJIUqzYGvDLc',
             {
                 method: "POST",
                 body: JSON.stringify({
-                    idToken : token,
-                    returnSecureToken : true,
+                    idToken: token,
+                  returnSecureToken: true,
                 }),
-                headers : {
-                    "Content-Type": "application/json",
+                headers: {
+                  "Content-Type": "application/json",
                 },
+              }
+            )
+            if(res.ok){
+                const data = await res.json();
+                data.users.forEach(element => {
+                    console.log(data.users);
+                    nameRef.current.value=element.displayName;
+                    photoUrlRef.current.value=element.photoUrl;
+                });
+            }else{
+                const data = await res.json();
+                console.log(data)
             }
-        )
-        if(res.ok){
-            const data = await res.json();
-            data.users.forEach(element => {
-                console.log(data.users);
-                nameRef.current.value=element.displayName;
-                photoUrlRef.current.value=element.photoUrl;
-            });
-        }else{
-            const data = await res.json();
-            console.log(data)
-        }
 
-    }catch(err){
-        console.log('Auto fetch error!');
-    }
+        }catch(err){
+            console.log('Auto fetch error!');
+      }
 }
 
-useEffect(AutoUpdateData,[]);
-        
+useEffect(()=>{
+    AutoUpdateData();
+},[]);
+
     const updateButtonHandler = async(event) =>{
         event.preventDefault();
         console.log('Updating...')
@@ -64,8 +66,7 @@ useEffect(AutoUpdateData,[]);
             if(res.ok){
                 const data = await res.json();
                 console.log(data);
-                nameRef.current.value='';
-                photoUrlRef.current.value='';
+                alert('Your Data Saved!')
             }else{
                 const data = await res.json();
                 console.log(data)

@@ -32,3 +32,28 @@
 .ComleteNow:hover{
     cursor: pointer;
 }
+.verifyDiv{
+    margin-top: 2%;
+    width: 150px;
+    margin-left: 40%;
+    height: 40px;
+}
+
+.verifyBtn{
+    border: solid;
+    border-width: 1px;
+    text-align: center;
+    font-family: 'product sans';
+    width: 100px;
+    height: 25px;
+    background-color: rgb(87, 193, 87);
+    border-color: rgb(36, 151, 36);
+    color: aliceblue;
+    border-radius: .8rem;
+
+}
+.verifyBtn:hover{
+    cursor: pointer;
+    background-color: rgb(60, 146, 60);
+
+}

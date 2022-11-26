@@ -26,3 +26,24 @@
     margin-top: 15px;
     padding-top: 10px;
 }
+.logoutDiv{
+    width: 100px;
+    margin-left: 90%;
+    margin-top: -30px;
+}
+.logoutBtn{
+    width: 110px;
+    height: 33px;
+    font-family: 'product sans';
+    text-align: center;
+    font-weight: bold;
+    border: solid;
+    border-width: 1px;
+    background-color: rgb(141, 140, 140);
+    color: white;
+    border-radius: .5rem;
+}
+.logoutBtn:hover{
+    background-color: rgb(108, 108, 108);
+    cursor: pointer;
+}
