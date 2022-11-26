@@ -4,3 +4,65 @@
    background-position: right top;
    background-attachment: fixed;
 }
+.userDetailsdiv{
+   margin-left: 25%;
+   padding-top: 130px;
+}
+
+.userDetailsForm{
+   border: solid;
+   border-width: 1px;
+   width: 600px;
+   height: 350px;
+}
+.userDetailsFormdiv{
+   padding-left: 5%;
+   height: 400px;
+   padding-top: 10%;
+}
+.headingdiv{
+   font-weight: bold;
+   font-size: 24px;
+}
+.contantdiv{
+   margin-top: 20px;
+}
+.contantdivfield{
+   margin-top: 2%;
+}
+
+.contantinputfield{
+   height: 30px;
+   width: 400px;
+   border-radius: .5rem;
+   border: solid;
+   border-width: 1px;
+}
+.contantinputfield:focus {
+   background-color: #eff4ff;
+   outline: 2px solid #77a2ff;  
+  }
+.contantinputfield.visited {
+   background-color: #eff4ff;
+   outline: 2px solid #77a2ff; 
+  }
+
+.contantBTNfield{
+   border: solid;
+   background-color: rgb(115, 169, 255);
+   border-width: 1px;
+   width: 150px;
+   height: 30px;
+   color: white;
+   margin-left: 44%;
+   margin-top: 3%;
+   border-radius: 2rem;
+   font-weight: bold;
+   text-align: center;
+   font-size: 17px;
+   font-family: 'product sans';
+}
+.contantBTNfield:hover{
+   background-color: rgb(86, 137, 218) ;
+   cursor: pointer;
+}

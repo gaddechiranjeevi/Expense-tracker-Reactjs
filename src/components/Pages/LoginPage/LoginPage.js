@@ -43,9 +43,10 @@ const LoginPage = () =>{
                       )
                       if(response.ok){
                         const data = await response.json();
-                        console.log('User has successfully Loged in.');
+                        console.log(data);
                         localStorage.setItem('JWTTOKEN',data.idToken);
                         localStorage.setItem('userID',data.localId);
+                        localStorage.setItem('Email',data.email);
                         emailRef.current.value='';
                         passwordOneRef.current.value='';
                         history.replace('/welcome');
@@ -120,12 +121,12 @@ const LoginPage = () =>{
                         <div className={classes.emaildiv}>
                             <input type='password'  minLength="6" className={classes.btnclass} ref={passwordOneRef} maxLength="16" placeholder="Password" required/>
                         </div>
-                        {!swapCheck && <div className='emaildiv'>
+                        {!swapCheck && <div className={classes.emaildiv}>
                             <input type='password'   ref={passwordTwoRef} className={classes.btnclass} maxLength="16" placeholder="Confirm Password" minLength="6"  required/>
                         </div>}
                         <div className={classes.emaildiv}>
-                            <button onClick={SignupBtnHandler} className={classes.submitbtn} >{swapCheck? 'Login' : 'SignUp'  }</button>
-                            {swapCheck && <label className={classes.forgotpassword} > Forgot password</label>}
+                            <button onClick={SignupBtnHandler} className={classes.submitbtn} >{swapCheck? 'Login' : 'SignUp'  }</button><br/>
+                               {swapCheck && <label className={classes.forgotpassword} > Forgot password</label>}
                         </div>
                     </div>
                 </div>
