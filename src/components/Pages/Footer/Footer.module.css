@@ -1,0 +1,10 @@
+.footerdiv{
+    background-color:rgb(255, 255, 255);
+    border: solid;
+    border-width: 1px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 7%;
+    padding-left: 50px;
+}

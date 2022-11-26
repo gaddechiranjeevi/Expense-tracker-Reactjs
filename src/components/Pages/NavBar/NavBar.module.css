@@ -12,24 +12,30 @@
     width: 150px;
     margin-left: 500px;
     margin-top: -23px;
+    text-decoration: dashed;
+}
+.nammeclass{
+    text-decoration: dashed;
+    color: black;
 }
 .subDivvP{
 
     width: 150px;
     margin-left: 300px;
     margin-top: -25px;
+    text-decoration: dashed;
 }
 .subDivvH{
 
     width: 150px;
     margin-left: 100px;
-    margin-top: 15px;
-    padding-top: 10px;
+    padding-top: 20px;
+    text-decoration: dashed;
 }
 .logoutDiv{
     width: 100px;
     margin-left: 90%;
-    margin-top: -30px;
+    margin-top: -20px;
 }
 .logoutBtn{
     width: 110px;
@@ -39,11 +45,11 @@
     font-weight: bold;
     border: solid;
     border-width: 1px;
-    background-color: rgb(141, 140, 140);
+    background-color: blueviolet;
     color: white;
     border-radius: .5rem;
 }
 .logoutBtn:hover{
-    background-color: rgb(108, 108, 108);
+    background-color: rgb(109, 8, 204);
     cursor: pointer;
 }

@@ -1,0 +1,20 @@
+.maindiv{
+    margin-left: 3%;
+    height: 100px;
+}
+
+.amountdiv{
+    border: solid;
+    border-width: 1px;
+    border-radius: .5rem;
+    border-color: rgb(192, 189, 189);
+    height: 35px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: blueviolet;
+    color: white;
+
+}

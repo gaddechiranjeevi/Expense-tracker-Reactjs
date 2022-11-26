@@ -1,8 +1,10 @@
-import React, {useRef,useState } from 'react';
+import React, {useContext, useRef,useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import classes from './LoginPage.module.css';
+import  Context from "../../../Context/Context";
 
 const LoginPage = () =>{
+    const CTX = useContext(Context);
     const emailRef= useRef();
     const passwordOneRef =useRef();
     const passwordTwoRef = useRef();
@@ -49,6 +51,7 @@ const LoginPage = () =>{
                         localStorage.setItem('Email',data.email);
                         emailRef.current.value='';
                         passwordOneRef.current.value='';
+                        CTX.login(true);
                         history.replace('/welcome');
                       }else{
                         const data = await response.json();

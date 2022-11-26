@@ -1,33 +1,43 @@
 import './App.css';
-import { Redirect, Route, Switch} from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 import UserDetails from './components/Pages/ProfilePage/UserDetails'
 import LoginPage from './components/Pages/LoginPage/LoginPage';
 import Welcome from "./components/Pages/WelcomePage/Welcome";
 import NavBar from './components/Pages/NavBar/NavBar';
 import PasswordReset from './components/Pages/LoginPage/PasswordReset';
+import { useContext } from 'react';
+import Expenses from './components/Pages/ExpensesPage/Expenses';
+import Context from './Context/Context';
+import Footer from "./components/Pages/Footer/Footer";
 
 function App() {
+  const CTX = useContext(Context);
   return (
     <div >
       <NavBar />
       <Switch>      
-
-      <LoginPage path='/auth' />
-
-      <Route path='/welcome'>
+      {!CTX.isLogin && <Route path="/auth" exact>
+      <LoginPage />
+      </Route>}
+       
+      {CTX.isLogin && <Route path="/welcome" exact>
         <Welcome />
-      </Route>
+      </Route>}
 
-      <Route path={'/user'}>
+      {CTX.isLogin && <Route path={'/user'} exact>
         <UserDetails />
-      </Route>
-      <Route path="/reset">
+      </Route>}
+
+      {!CTX.isLogin && <Route path="/reset" exact>
         <PasswordReset />
-      </Route>
-      <Route path='*'>
-        <Redirect to='/auth' />
-      </Route>
+      </Route>}
+
+      {CTX.isLogin && <Route path="/expenses" exact>
+        <Expenses />
+      </Route>}
+
       </Switch>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,98 @@
+.mainDivform{
+
+    margin-left: 3%;
+    height: 300px;
+
+}
+
+
+.moneyDiv{
+    color: gray;
+    width: 100px;
+
+}
+.moneyinput{
+    padding-left: 2%;
+    height: 30px;
+    width: 400px;
+    font-family: 'product sans';
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgb(189, 187, 187);
+}
+.moneyinput:focus{
+    background-color: #f2fff4;
+    outline: 2px solid rgb(236, 255, 244);
+}
+
+.moneyinput:visited{
+    background-color: #ebffef;
+    outline: 2px solid rgb(230, 255, 232) ;
+}
+
+.disdiv{
+    color: gray;
+    padding-top: 1.5%;
+    width: 100px;
+}
+
+.Divinput{
+    padding-left: 2%;
+    height: 80px;
+    width: 400px;
+    font-family: 'product sans';
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgb(189, 187, 187);
+
+}
+.Divinput:focus{
+    background-color: #eefff1;
+    outline: 2px solid rgb(233, 255, 242);
+}
+
+.Divinput:visited{
+    background-color: #eefff2;
+    outline: 2px solid rgb(229, 255, 231) ;
+}
+
+.catadiv{
+    color: gray;
+    width: 100px;
+    margin-left: 70%;
+    margin-top: -22%;
+}
+.selectdiv{
+    margin-top: 5%;
+}
+
+.select{
+    height: 30px;
+    width: 158px;
+    border:solid;
+    border-width: 1px;
+    border-color: rgb(192, 192, 192);
+    font-family: 'product sans';
+    border-radius: 5px;
+    padding-left: 5%;
+}
+.submitdiv{
+    margin-top: 18%;
+    margin-left: 75%;
+}
+.submitdivbtn{
+    background-color: rgb(55, 115, 255);
+    height: 35px;
+    width: 120px;
+    border:solid;
+    border-width: 1px;
+    border-color: rgb(192, 192, 192);
+    font-family: 'product sans';
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+
+}

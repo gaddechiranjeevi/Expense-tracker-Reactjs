@@ -1,0 +1,41 @@
+.maindivitems{
+    margin-left: 3%;
+}
+.maindivitemsh3{
+
+    width: 100px;
+}
+.maindivitemsdis{
+
+    width: 300px;
+    margin-left: 20%;
+    margin-top: -40px;
+    color: gray;
+    height: 30px;
+}
+.moneyItemsdiv{
+    margin-left: 80%;
+    margin-top: -30px;
+    height: 40px;
+    text-align: center;
+    width: 100px;
+}
+.moneyItemslabel{
+    border:solid;
+    border-width: 1px;
+    border-color: rgb(224, 224, 224);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .5rem;
+    background-image: linear-gradient(to right , #cc0066 , blueviolet);
+    color: white;
+    font-weight: bold;
+
+}
+
+.hrelementss{
+    opacity: 50%;
+    width: 700px;
+}
