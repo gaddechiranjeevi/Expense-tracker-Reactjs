@@ -1,10 +1,11 @@
-import React, {useContext, useRef,useState } from 'react';
+import React, {useRef,useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import classes from './LoginPage.module.css';
-import  Context from "../../../Context/Context";
+import  { authActions } from "../../../Store/Auth";
 
 const LoginPage = () =>{
-    const CTX = useContext(Context);
+    const dispatch = useDispatch();
     const emailRef= useRef();
     const passwordOneRef =useRef();
     const passwordTwoRef = useRef();
@@ -51,7 +52,7 @@ const LoginPage = () =>{
                         localStorage.setItem('Email',data.email);
                         emailRef.current.value='';
                         passwordOneRef.current.value='';
-                        CTX.login(true);
+                        dispatch(authActions.login());
                         history.replace('/welcome');
                       }else{
                         const data = await response.json();

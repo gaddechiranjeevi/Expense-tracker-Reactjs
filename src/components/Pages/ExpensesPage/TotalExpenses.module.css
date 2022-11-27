@@ -16,5 +16,32 @@
     font-weight: bold;
     background-color: blueviolet;
     color: white;
-
+}
+.preminumDiv{
+    width: 200px;
+    margin-left: 400px;
+    margin-top: -68px;
+}
+.preminumBTN{
+    height: 50px;
+    width: 300px;
+    border-radius: 300rem;
+    padding: 1rem;
+    font-family: 'product sans';
+    font-size: 1rem;
+    padding: .5rem 3rem;
+    color: blueviolet;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 3px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+    font-weight: bold;
+}
+.preminumBTN:hover{
+    box-shadow: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    transition-duration: .8s;
 }

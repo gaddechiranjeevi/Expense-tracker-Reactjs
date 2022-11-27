@@ -1,22 +1,20 @@
 import ExpensesForm from "../ExpensesPage/ExpensesForm";
 import Card from "../../../UI/Card";
-import { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import ExpensesList from "../ExpensesPage/ListOfExpenses";
 import classes from "./Expenses.module.css";
 import TotalExpense from "../ExpensesPage/TotalExpenses";
-import Context from "../../../Context/Context";
+import { itemAction } from "../../../Store/FetchData";
 
 const Expenses = () => {
-   const CTX = useContext(Context);
-   const auto = () => {
-    CTX.forReload()
-   }
-   useEffect(auto,[]);
+  
+  const dispatch = useDispatch();
+  const itemsX = useSelector(state=> state.itemsData.itemList);
 
-   const itemsli = CTX.items;
+   console.log(itemsX);
 
-  const itemsList = itemsli.map((element) => {
+  const itemsList = itemsX.map((element) => {
     return (
 
       <ExpensesList
@@ -36,7 +34,7 @@ const Expenses = () => {
         <h1>Expense Tracker</h1>
       </div>
       <Card>
-        <TotalExpense total={CTX.total}/>
+        <TotalExpense />
       </Card>
 
       <Card>

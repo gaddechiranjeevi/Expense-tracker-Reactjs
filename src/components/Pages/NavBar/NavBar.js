@@ -1,9 +1,12 @@
 import classes from './NavBar.module.css';
 import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import Context from '../../../Context/Context'
 import { NavLink, useHistory } from 'react-router-dom';
+import { authActions } from '../../../Store/Auth'
 
 const NavBar = ()=>{
+    const dispatch = useDispatch();
     const history = useHistory();
     const CTX = useContext(Context);
 
@@ -12,7 +15,7 @@ const NavBar = ()=>{
         localStorage.setItem('JWTTOKEN','');
         localStorage.setItem('userID','');
         localStorage.setItem('Email','');
-        CTX.login(false);
+        dispatch(authActions.logout());
         history.replace('/auth');
      }
     return(<div className={classes.mainDivv}>

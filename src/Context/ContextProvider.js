@@ -1,29 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Context from "./Context";
+import { useDispatch } from "react-redux";
+import { itemsAction } from "../Store/FetchData";
 
 const ContextProvider = (props) =>{
 
-    const [isLogin ,setLogin ]= useState(false);
+    const dispatch = useDispatch();
     const [isEditOn, setEdit] = useState(false);
     const [values , setValues] = useState('');
-    const [items, setItems] = useState([]);
-    const [total, setTotal] = useState(0);
-
-    const loginHandler = (value) =>{
-        setLogin(value);
-    }
-
-    useEffect(()=>{
-        const localIsLogin = localStorage.getItem('JWTTOKEN');
-        if(localIsLogin ===null){
-            setLogin(false);
-        }else if(localIsLogin === ''){
-            setLogin(false);
-        }else if(localIsLogin.trim().length > 0){
-            setLogin(true);
-        }
-    },[])
 
     const setEditingState = (value) =>{
         setEdit(value);
@@ -53,8 +38,8 @@ const ContextProvider = (props) =>{
             }
             index++;
           }
-          setItems([...arr]);
 
+        dispatch(itemsAction.fetchExpenses(arr))
         }catch(err){
           console.log(`Some error ${err}`);
         }
@@ -63,32 +48,11 @@ const ContextProvider = (props) =>{
       autoreloadExpenses();
     },[]);
 
-    let totalAmount=0;
-    const totalCal =()=>{
-      items.map((element)=>{
-        totalAmount = totalAmount + Number(element.enteredMoney);
-      })
-      setTotal(totalAmount);
-
-    }
-   useEffect(()=>{
-     totalCal();
-   },[items])
-
-    const itemsHandler = (data) => {
-    setItems([...items, data]);
-    };
-
     const contextData={
-        isLogin: isLogin,
-        login: loginHandler,
         editable: editHandler,
         editValues:values,
         isEditOn:isEditOn,
         editStateFunction:setEditingState,
-        items:items,
-        total:total,
-        itemsSetup:itemsHandler,
         forReload:autoreloadExpenses,
     }
 

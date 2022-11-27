@@ -1,9 +1,12 @@
 import React, { useRef, useContext, useState } from "react";
 import axios from 'axios';
+import { useDispatch } from "react-redux";
 import classes from "./ExpensesForm.module.css";
 import Context from "../../../Context/Context";
+import { itemsAction } from "../../../Store/FetchData";
 
 const ExpensesForm = (props) =>{
+    const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(false);
     const CTX = useContext(Context);
     const moneyRef = useRef()
@@ -25,7 +28,7 @@ const ExpensesForm = (props) =>{
             try{
                 const res = axios.post(`https://expensetracker-userdata-default-rtdb.firebaseio.com/expenses/${userId}.json`,data);
                 console.log(res);
-                CTX.itemsSetup(data);
+                dispatch(itemsAction.newExpenses(data));
             }catch(err){
                 console.log(`Some error ${err}`);
             }
