@@ -19,7 +19,7 @@ function App() {
     dispatch(authActions.checker());
   },[])
   return (
-    <div >
+    <div className='bgColorApp'>
       <NavBar />
       <Switch>      
       {!login && <Route path="/auth" exact>

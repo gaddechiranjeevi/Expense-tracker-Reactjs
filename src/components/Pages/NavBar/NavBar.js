@@ -1,14 +1,14 @@
 import classes from './NavBar.module.css';
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import Context from '../../../Context/Context'
 import { NavLink, useHistory } from 'react-router-dom';
 import { authActions } from '../../../Store/Auth'
 
 const NavBar = ()=>{
     const dispatch = useDispatch();
     const history = useHistory();
-    const CTX = useContext(Context);
+    const isLogin = useSelector((state) => state.auth.isAuthenticated);
+    const ispremium = useSelector((state)=>state.premium.preminumValue)
 
      const LogOutHandler = (event) => {
         event.preventDefault();
@@ -17,8 +17,14 @@ const NavBar = ()=>{
         localStorage.setItem('Email','');
         dispatch(authActions.logout());
         history.replace('/auth');
-     }
-    return(<div className={classes.mainDivv}>
+     };
+     console.log(ispremium)
+      const checkBoxHandler=(event)=>{
+      event.preventDefault();
+      
+  }
+    return ( 
+        <div className={classes.mainDivv}>
         <div className={classes.subDivvH} >
         <NavLink to='/welcome' className={classes.nammeclass}>Home</NavLink>
         </div>
@@ -28,7 +34,12 @@ const NavBar = ()=>{
         <div className={classes.subDivvA}>
         <NavLink to='/' className={classes.nammeclass}>About us</NavLink>
         </div>
-        <div className={classes.logoutDiv}><button onClick={LogOutHandler} className={classes.logoutBtn}>{CTX.isLogin? 'LogOut' : 'Login' }</button></div>
+
+        {ispremium && <div className={classes.container}>
+            <button onClick={checkBoxHandler} className={classes.toggleBtn}>Toggle</button></div>}
+
+        <div className={classes.logoutDiv}>
+            <button onClick={LogOutHandler} className={classes.logoutBtn}>{isLogin? 'LogOut' : 'Login' }</button></div>
         <hr className={classes.hrelement}></hr>
     </div>)
 }

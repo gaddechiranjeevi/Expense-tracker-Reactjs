@@ -45,3 +45,29 @@
     font-size: 18px;
     transition-duration: .8s;
 }
+.downloadBTnDiv{
+    margin-left: 68%;
+    margin-top: .5%;
+}
+
+.downloadBTn{
+    border: solid;
+    border-width: 1px;
+    border-color: #04AA6D;
+
+    color: #04AA6D;
+    background-color: white;
+    font-family: 'Product sans';
+    font-size: 10px;
+    height: 20px;
+    width: 100px;
+    border-radius: 2rem;
+      opacity: 60%;
+}
+.downloadBTn:hover{
+    background-color: #04AA6D;
+    color: white;
+    border-color: white;
+    opacity: 90%;
+
+}
