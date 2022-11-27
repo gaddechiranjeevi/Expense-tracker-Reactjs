@@ -36,21 +36,18 @@
 }
 
 .hrelementss{
-    opacity: 50%;
     width: 700px;
 }
 .Deletebtn{
     border: solid;
     border-width: 1px;
-    background-color: rgb(107, 107, 107);
+    background-color: rgba(107, 107, 107, 0.382);
     color:white;
     border-radius: 3rem;
     font-weight: bold;
     border-color: white;
     width: 22px;
     height: 20px;
-    opacity: 50%;
-
 }
 .DeletebtnDiv{
 
@@ -68,24 +65,22 @@
 .Editbtn{
     border: solid;
     border-width: 1px;
-    background-color: rgb(126, 126, 126);
+    background-color: rgba(126, 126, 126, 0.27);
     border-radius: .7rem;
     width: 50px;
     font-weight: bold;
     border-color: white;
     height: 25px;
-    opacity: 40%;
+    color: rgba(0, 0, 0, 0.378);    
 }
 
 .Editbtn:hover{
-    opacity: 100%;
-    background-color: rgb(192, 192, 192);
+    background-color: rgb(161, 161, 161);
     color: rgb(255, 255, 255);
     border-color: #cc0066;
     border-width: 2px;
 }
 .Deletebtn:hover{
-    opacity: 90%;
     background-color: rgb(212, 212, 212);
     color:#cc0066;
     border-width: 1px;

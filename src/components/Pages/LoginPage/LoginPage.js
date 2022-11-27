@@ -1,11 +1,14 @@
-import React, {useRef,useState } from 'react';
+import React, {useContext, useRef,useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import classes from './LoginPage.module.css';
 import  { authActions } from "../../../Store/Auth";
+import Context from '../../../Context/Context';
 
 const LoginPage = () =>{
     const dispatch = useDispatch();
+    const CTX = useContext(Context);
+
     const emailRef= useRef();
     const passwordOneRef =useRef();
     const passwordTwoRef = useRef();
@@ -24,7 +27,6 @@ const LoginPage = () =>{
         const enteredEmail = emailRef.current.value;
         const enteredPassword = passwordOneRef.current.value;
 
-        //Login
         if(swapCheck){
             if(passwordOneRef.current.value.trim().length > 5 && 
             emailRef.current.value.includes("@") &&
@@ -52,6 +54,8 @@ const LoginPage = () =>{
                         localStorage.setItem('Email',data.email);
                         emailRef.current.value='';
                         passwordOneRef.current.value='';
+
+                        CTX.forReload();
                         dispatch(authActions.login());
                         history.replace('/welcome');
                       }else{
@@ -62,9 +66,11 @@ const LoginPage = () =>{
                 catch(err){
                     console('Loging Something went wrong!');
                 }
-            }    
+            }    else{
+                alert('Login Credentials Wrong');
+            }
         } 
-        //Signup
+
          else if(!swapCheck){
 
          if(passwordOneRef.current.value === passwordTwoRef.current.value &&

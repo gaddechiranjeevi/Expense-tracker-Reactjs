@@ -32,7 +32,7 @@ const NavBar = ()=>{
         <NavLink to='/expenses' className={classes.nammeclass}>Products</NavLink>
         </div>
         <div className={classes.subDivvA}>
-        <NavLink to='/' className={classes.nammeclass}>About us</NavLink>
+        <NavLink to='/about' className={classes.nammeclass}>About us</NavLink>
         </div>
 
         {ispremium && <div className={classes.container}>

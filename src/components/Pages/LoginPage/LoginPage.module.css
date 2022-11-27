@@ -76,17 +76,18 @@
     margin-left: 2%;
     width: 220px;
     height: 35px;
-    opacity: 40%;
-    border: solid gray;
+    border: solid rgb(184, 184, 184);
     border-width: 1px;
-    background-color: rgb(200, 253, 200);
+    background-color: rgba(200, 253, 200, 0.695);
     font-weight: bold;
     text-align: center;
     font-family: 'Product Sans';
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.392);
 }
 .changebtn:hover{
-    opacity: 60%;
+    color: rgba(0, 0, 0, 0.745);
+    background-color: rgba(200, 253, 200, 0.695);
 }
 
 .forgotpassword{
