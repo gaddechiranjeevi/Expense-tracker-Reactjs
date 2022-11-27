@@ -1,28 +1,71 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext, useState } from "react";
 import axios from 'axios';
-import classes from "./ExpensesForm.module.css"
+import classes from "./ExpensesForm.module.css";
+import Context from "../../../Context/Context";
 
 const ExpensesForm = (props) =>{
+    const [isLoading, setLoading] = useState(false);
+    const CTX = useContext(Context);
     const moneyRef = useRef()
     const descriptionRef = useRef()
     const categoryRef = useRef()
 
     const buttonHandler = async(event) => {
         event.preventDefault();
-
+     setLoading(true);
         const data ={
              enteredMoney : moneyRef.current.value,
              enteredDescription: descriptionRef.current.value,
              enteredCategory : categoryRef.current.value,
         }
         const userId = localStorage.getItem('userID');
-        props.onClick(data);
+        if(moneyRef.current.value !=='' && 
+        descriptionRef.current.value !=='' 
+        ){
+            try{
+                const res = axios.post(`https://expensetracker-userdata-default-rtdb.firebaseio.com/expenses/${userId}.json`,data);
+                console.log(res);
+                CTX.itemsSetup(data);
+            }catch(err){
+                console.log(`Some error ${err}`);
+            }
+        }else{
+            alert('Input fields are empty!');
+        }
+        setLoading(false);
+    }
+    if(CTX.isEditOn){
+        moneyRef.current.value=CTX.editValues.money;
+        descriptionRef.current.value=CTX.editValues.description;
+        categoryRef.current.value=CTX.editValues.category;
 
-        try{
-            const res = axios.post(`https://expensetracker-userdata-default-rtdb.firebaseio.com/expenses/${userId}.json`,data);
-            console.log(res);
-        }catch(err){
-            console.log(`Some error ${err}`);
+    }
+    const editBTNHandler =async(event)=>{
+        event.preventDefault();
+        CTX.editStateFunction(false);
+
+
+        if(CTX.isEditOn){
+            let id = CTX.editValues.id;
+            const userIdEdit = localStorage.getItem('userID');
+            const data={
+                enteredMoney: moneyRef.current.value,
+                enteredDescription: descriptionRef.current.value,
+                enteredCategory:categoryRef.current.value
+            }
+            setLoading(true);
+            try{
+                const res = await axios.put(`https://expensetracker-userdata-default-rtdb.firebaseio.com/expenses/${userIdEdit}/${id}.json`,data)
+                console.log(res);
+                console.log('delete success');
+                moneyRef.current.value='';
+                descriptionRef.current.value='';
+                categoryRef.current.value='';
+                CTX.forReload();
+            }catch(err){
+                console.log(`Some error ${err}`);
+            }
+            setLoading(false);
         }
         }
 
@@ -58,7 +101,8 @@ const ExpensesForm = (props) =>{
                     </div>
                     </div>
                     <div className={classes.submitdiv}>
-                        <button onClick={buttonHandler} className={classes.submitdivbtn} >Add</button>
+                        {!CTX.isEditOn && <button onClick={buttonHandler} className={classes.submitdivbtn} >{isLoading? 'Loading...':'Submit'} </button>}
+                        {CTX.isEditOn && <button onClick={editBTNHandler} className={classes.submitdivbtn} >{isLoading? 'Loading...':'Update'}</button>}
                     </div>
                 </form>
             </div>

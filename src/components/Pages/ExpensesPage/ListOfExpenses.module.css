@@ -39,3 +39,55 @@
     opacity: 50%;
     width: 700px;
 }
+.Deletebtn{
+    border: solid;
+    border-width: 1px;
+    background-color: rgb(107, 107, 107);
+    color:white;
+    border-radius: 3rem;
+    font-weight: bold;
+    border-color: white;
+    width: 22px;
+    height: 20px;
+    opacity: 50%;
+
+}
+.DeletebtnDiv{
+
+    width: 25px;
+    margin-left: 120px;
+    margin-top: -47%;
+}
+
+.EditbtnDiv{
+
+    margin-left: -80px;
+    margin-top: -3%;
+    width: 50px;
+}
+.Editbtn{
+    border: solid;
+    border-width: 1px;
+    background-color: rgb(126, 126, 126);
+    border-radius: .7rem;
+    width: 50px;
+    font-weight: bold;
+    border-color: white;
+    height: 25px;
+    opacity: 40%;
+}
+
+.Editbtn:hover{
+    opacity: 100%;
+    background-color: rgb(192, 192, 192);
+    color: rgb(255, 255, 255);
+    border-color: #cc0066;
+    border-width: 2px;
+}
+.Deletebtn:hover{
+    opacity: 90%;
+    background-color: rgb(212, 212, 212);
+    color:#cc0066;
+    border-width: 1px;
+    border-color: #cc0066;
+}
