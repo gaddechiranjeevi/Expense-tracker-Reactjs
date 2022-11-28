@@ -1,15 +1,20 @@
 import ExpensesForm from "../ExpensesPage/ExpensesForm";
 import Card from "../../../UI/Card";
+import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ExpensesList from "../ExpensesPage/ListOfExpenses";
 import classes from "./Expenses.module.css";
 import TotalExpense from "../ExpensesPage/TotalExpenses";
 import { itemAction } from "../../../Store/FetchData";
+import Context from "../../../Context/Context";
 
 const Expenses = () => {
   
   const dispatch = useDispatch();
-  const itemsX = useSelector(state=> state.itemsData.itemList);
+  const paginationFetch = useContext(Context);
+  const { forReload } = paginationFetch;
+  const itemsX = useSelector((state) => state.itemsData.itemList);
+  const pagination = useSelector((state) => state.pagination.expensePagination);
 
 
   const itemsList = itemsX.map((element) => {
@@ -26,6 +31,13 @@ const Expenses = () => {
     );
   });
 
+  const nextProducts = () => {
+    forReload(pagination.nextPage);
+  };
+  const previousProducts = () => {
+    forReload(pagination.previousPage);
+  };
+
   return (
     <div className={classes.expensesMaindiv}>
       <div className={classes.expensesheading}>
@@ -36,9 +48,26 @@ const Expenses = () => {
       </Card>
 
       <Card>
-        <ExpensesForm onClick={''} />
+        <ExpensesForm onClick={""} />
       </Card>
-      <Card>{itemsList}</Card>
+      <Card>
+        <>{itemsList}</>
+        <div className="pagination-container">
+        {pagination?.previousPage ? (
+            <button className="paginationBtn" onClick={previousProducts}>
+              {"<"}
+            </button>
+          ) : null}
+          <button className="paginationBtn">
+            {pagination?.currentPage ? pagination.currentPage : 0}
+          </button>
+          {pagination?.nextPage ? (
+            <button className="paginationBtn" onClick={nextProducts}>
+              {">"}
+            </button>
+          ) : null}
+        </div>
+        </Card>
     </div>
   );
 };

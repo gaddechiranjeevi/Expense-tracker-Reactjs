@@ -15,10 +15,9 @@ const TableComp = (props) => {
       <Table sx={{ minWidth: 500 }} aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>TableValues.one</TableCell>
-            <TableCell align="right">TableValues.two</TableCell>
-            <TableCell align="right">TableValues.three</TableCell>
-            <TableCell align="right">TableValues.four</TableCell>
+          {TableValues.map((item, index)=> {
+              return index? <TableCell align="right">{item}</TableCell> :  <TableCell >{item}</TableCell>
+            })}
           </TableRow>
         </TableHead>
         <TableBody>

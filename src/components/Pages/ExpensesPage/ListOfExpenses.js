@@ -24,7 +24,8 @@ const ExpensesList = (props) => {
 
         CTX.editable(props);
     }
-    return(<div className={classes.maindivitems}>
+    return (
+    <div className={classes.maindivitems}>
         <div className={classes.maindivitemsh3}>
             <h3>{props.description}</h3>
         </div>
@@ -32,9 +33,14 @@ const ExpensesList = (props) => {
             <label> {props.category}</label>
         </div>
         <div className={classes.moneyItemsdiv}>
-            <div className={classes.moneyItemslabels}><label>{props.money}</label></div>
-            <div className={classes.DeletebtnDiv}><button onClick={deleteBtnHandler}>X</button></div>
-            <div className={classes.EditbtnDiv}><button onCLick={editBtnHandler}>✎</button></div>
+            <div className={classes.moneyItemslabels}>
+                <label>{props.money}</label>
+                </div>
+            <div className={classes.DeletebtnDiv}>
+                <button className={classes.Deletebtn}onClick={deleteBtnHandler}>X</button>
+                </div>
+            <div className={classes.EditbtnDiv}>
+                <button className={classes.Editbtn}onCLick={editBtnHandler}>✎</button></div>
         </div>
         <hr className={classes.hrelementss}></hr>
     </div>)
