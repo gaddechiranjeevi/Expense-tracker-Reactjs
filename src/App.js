@@ -6,6 +6,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { authActions } from './Store/Auth';
 import Footer from "./components/Pages/Footer/Footer";
 import Loading from "./components/Pages/Loading/Loading";
+import { SnackbarProvider} from "notistack";
+
+const dotenv = require('dotenv');
+dotenv.config();
 
 const Welcome = React.lazy(()=>import('./components/Pages/WelcomePage/Welcome'));
 const PasswordReset =React.lazy(()=>import( "./components/Pages/LoginPage/PasswordReset"));
@@ -19,42 +23,49 @@ function App() {
 
   useEffect(()=>{
     dispatch(authActions.checker());
-  },[])
+  }, [])
   return (
     <Suspense fallback={<Loading />}>
           <div className='bgColorApp'>
+            <SnackbarProvider maxSnack={3}>
       <NavBar />
       <Switch>      
-      {!login && <Route path="/auth" exact>
+      {!login && (<Route path="/auth" exact>
       <LoginPage />
-      </Route>}
+      </Route>
+      )}
        
-      {login && <Route path="/welcome" exact>
+      {login && (<Route path="/welcome" exact>
         <Welcome />
-      </Route>}
+      </Route>
+      )}
+
       <Route path='/about' exact>
         <Loading />
       </Route>
 
-      {login && <Route path={'/user'} exact>
+      {login && (<Route path={'/user'} exact>
         <UserDetails />
-      </Route>}
+      </Route>
+      )}
 
-      {!login && <Route path="/reset" exact>
+      {!login && (<Route path="/reset" exact>
         <PasswordReset />
-      </Route>}
+      </Route>
+      )}
 
-      {login && <Route path="/expenses" exact>
+      {login && (<Route path="/expenses" exact>
         <Expenses />
-      </Route>}
+      </Route>
+      )}
        <Route path='*' exact>
         {login && <Redirect to='./expenses'></Redirect>}
         {!login && <Redirect to='./auth'></Redirect>}
         </Route>
-
       </Switch>
       <Footer />
-    </div>
+      </SnackbarProvider>
+      </div>
     </Suspense>
   );
 }

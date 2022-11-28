@@ -30,9 +30,9 @@ const ContextProvider = (props) =>{
           for(const key in data){
 
             arr[index]={
-              enteredCategory:data[key].enteredCategory,
-              enteredDescription:data[key].enteredDescription,
-              enteredMoney:data[key].enteredMoney,
+              category:data[key].category,
+              description:data[key].description,
+              amount:data[key].amount,
               id:key,
 
             }

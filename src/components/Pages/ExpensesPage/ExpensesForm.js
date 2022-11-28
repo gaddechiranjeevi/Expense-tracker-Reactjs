@@ -4,39 +4,68 @@ import { useDispatch } from "react-redux";
 import classes from "./ExpensesForm.module.css";
 import Context from "../../../Context/Context";
 import { itemsAction } from "../../../Store/FetchData";
+import { useSnackbar } from "notistack";
+import { authActions } from "../../../Store/Auth";
+import { useHistory } from "react-router-dom";
 
 const ExpensesForm = (props) =>{
     const dispatch = useDispatch();
+    const history = useHistory();
     const [isLoading, setLoading] = useState(false);
     const CTX = useContext(Context);
     const moneyRef = useRef()
     const descriptionRef = useRef()
     const categoryRef = useRef()
+    const { enqueueSnackbar } = useSnackbar();
+
+    const setAlert = (response) => {
+
+        enqueueSnackbar(response.message, {
+          variant: response.type === 1 ? "success" : "error",
+          anchorOrigin: { vertical: "bottom", horizontal: "right" },
+        });
+      };    
 
     const buttonHandler = async(event) => {
         event.preventDefault();
      setLoading(true);
         const data ={
-             enteredMoney : moneyRef.current.value,
-             enteredDescription: descriptionRef.current.value,
-             enteredCategory : categoryRef.current.value,
-        }
-        const userId = localStorage.getItem('userID');
+             amount : moneyRef.current.value,
+             description: descriptionRef.current.value,
+             category : categoryRef.current.value,
+        };
+
+        const token = localStorage.getItem('JWTTOKEN');
+
         if(moneyRef.current.value !=='' && 
         descriptionRef.current.value !=='' 
         ){
             try{
-                const res = axios.post(`https://expensetracker-userdata-default-rtdb.firebaseio.com/expenses/${userId}.json`,data);
+                const res = await axios.post(`http://localhost:3000/auth/api/addexpense`,data,{ headers: { "Authorization" : token}});
                 console.log(res);
-                dispatch(itemsAction.newExpenses(data));
-            }catch(err){
-                console.log(`Some error ${err}`);
-            }
+
+                setAlert(res.data);
+                if (
+                    res.data.response.name &&
+                    res.data.response.name === "TokenExpiredError"
+                  ) {
+                    localStorage.setItem("JWTTOKEN", "");
+                    localStorage.setItem("userID", "");
+                    localStorage.setItem("Email", "");
+          
+                    dispatch(authActions.logout());
+                    history.replace("/auth");
         }else{
-            alert('Input fields are empty!');
+           dispatch(itemsAction.newExpenses(data));
         }
-        setLoading(false);
+    } catch (err) {
+        console.log(`Some error ${err}`);
+      }
+    } else {
+      alert("Input fields are empty!");
     }
+      setLoading(false);
+};
     if(CTX.isEditOn){
         moneyRef.current.value=CTX.editValues.money;
         descriptionRef.current.value=CTX.editValues.description;
@@ -52,10 +81,10 @@ const ExpensesForm = (props) =>{
             let id = CTX.editValues.id;
             const userIdEdit = localStorage.getItem('userID');
             const data={
-                enteredMoney: moneyRef.current.value,
-                enteredDescription: descriptionRef.current.value,
-                enteredCategory:categoryRef.current.value
-            }
+                amount: moneyRef.current.value,
+                description: descriptionRef.current.value,
+                category:categoryRef.current.value
+            };
             setLoading(true);
             try{
                 const res = await axios.put(`https://expensetracker-userdata-default-rtdb.firebaseio.com/expenses/${userIdEdit}/${id}.json`,data)
@@ -70,7 +99,7 @@ const ExpensesForm = (props) =>{
             }
             setLoading(false);
         }
-        }
+        };
 
     return(
         <div className={classes.mainDivform}>
