@@ -1,7 +1,6 @@
 import ExpensesForm from "../ExpensesPage/ExpensesForm";
 import Card from "../../../UI/Card";
 import { useDispatch, useSelector } from "react-redux";
-import axios from 'axios';
 import ExpensesList from "../ExpensesPage/ListOfExpenses";
 import classes from "./Expenses.module.css";
 import TotalExpense from "../ExpensesPage/TotalExpenses";
@@ -12,7 +11,6 @@ const Expenses = () => {
   const dispatch = useDispatch();
   const itemsX = useSelector(state=> state.itemsData.itemList);
 
-   console.log(itemsX);
 
   const itemsList = itemsX.map((element) => {
     return (

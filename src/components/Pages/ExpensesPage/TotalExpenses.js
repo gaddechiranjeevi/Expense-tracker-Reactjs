@@ -108,7 +108,7 @@ const TotalExpenses =() => {
             <div className={classes.amountdiv}>
                 <label>{totalAmount}.00</label>
             </div>
-            {ture && (
+            {true && (
               <div className={classes.preminumDiv}>
               <button className={classes.preminumBTN} onClick={displayRazorpay}>{false ? "Premium Button." : "Buy Premium Features"}</button>
             </div>)}

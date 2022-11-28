@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { authActions } from '../../../Store/Auth'
+import { premiumActions } from '../../../Store/PremiumBtn';
+import { itemsAction } from '../../../Store/FetchData';
 
 const NavBar = ()=>{
     const dispatch = useDispatch();
@@ -15,6 +17,9 @@ const NavBar = ()=>{
         localStorage.setItem('JWTTOKEN','');
         localStorage.setItem('userID','');
         localStorage.setItem('Email','');
+
+        dispatch(itemsAction.fetchExpenses([]));
+        dispatch(premiumActions.PremiumBtnDeactive());
         dispatch(authActions.logout());
         history.replace('/auth');
      };
@@ -34,6 +39,13 @@ const NavBar = ()=>{
         <div className={classes.subDivvA}>
         <NavLink to='/about' className={classes.nammeclass}>About us</NavLink>
         </div>
+
+        {ispremium && <div className={classes.subDivvL}>
+            <NavLink to="/leadership" className={classes.nammeclass}>
+                Leadership
+                </NavLink>
+                </div>
+                }
 
         {ispremium && <div className={classes.container}>
             <button onClick={checkBoxHandler} className={classes.toggleBtn}>Toggle</button></div>}
