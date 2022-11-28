@@ -1,0 +1,30 @@
+.image-container{ 
+    background-image: url('/src/components/background.jpg');
+    background-repeat: no-repeat;
+    background-position: right top; 
+    background-attachment: fixed; 
+    height: auto;
+    margin-top: -.6rem;
+}
+.heading-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 12vh;
+}
+.year-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.dateinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;  
+}
+.tablecontainer{
+    margin: 1rem;
+}
