@@ -23,10 +23,14 @@ const ContextProvider = (props) =>{
         setEditingState(true);
     }
 
-    const autoreloadExpenses = async (value) =>{
+    const autoreloadExpenses = async (value, rows) =>{
         const userId = localStorage.getItem('userID');
+        const rowsPerPage = { rowsPerPage: rows, page: value };
+
         try{
-          const res =await axios.get(`http://localhost:3000/auth/api/userexpenses`,  { headers: { Authorization: token } })
+          const res =await axios.post(`http://localhost:3000/auth/api/userexpenses`,
+          rowsPerPage,
+          { headers: { Authorization: token } });
           const data =res.data.responseuserExpenses.rows;
           console.log(data);
           let arr=[];
@@ -48,7 +52,12 @@ const ContextProvider = (props) =>{
         }
       }
     useEffect(()=>{
-      autoreloadExpenses();
+      const fetchedRows = localStorage.getItem("rowsPerPage");
+    if (fetchedRows) {
+      autoreloadExpenses(1, fetchedRows);
+    } else {
+      autoreloadExpenses(1, 10);
+    }
     },[token, login]);
 
     const contextData={
