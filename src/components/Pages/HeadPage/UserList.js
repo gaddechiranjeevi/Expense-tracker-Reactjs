@@ -18,10 +18,10 @@ const { fetchExpenseHandler } = props
         <div className="listItemDiv" onClick={fetchHandler}>
             <ul className="list-container" >
                 <li>
-                    name:  {props.user.name}
+                    {props.user.name}
                 </li>
                 <li>
-                    Email address: {props.user.email}
+                    {props.user.email}
                 </li>
 
             </ul>

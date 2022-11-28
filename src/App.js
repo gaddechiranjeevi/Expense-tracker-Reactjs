@@ -9,7 +9,8 @@ import Footer from "./components/Pages/Footer/Footer";
 import { premiumActions } from './Store/PremiumBtn';
 import Loading from "./components/Pages/Loading/Loading";
 import { SnackbarProvider} from "notistack";
-import Leadership from "./components/Pages/HeadPage/"
+import Report from "./components/Pages/Report";
+import Leadership from "./components/Pages/HeadPage/";
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -82,6 +83,17 @@ function App() {
 
       {login && (<Route path={'/user'} exact>
         <UserDetails />
+      </Route>
+      )}
+       {login && (
+        <Route path="/leadership" exact>
+        <Leadership />
+        </Route>
+        )}
+
+        {login && (
+        <Route path="/Report" exact>
+      <Report />
       </Route>
       )}
 

@@ -3,17 +3,26 @@ import {CSVLink} from 'react-csv';
 import { useDispatch, useSelector } from 'react-redux';
 import { premiumActions } from '../../../Store/PremiumBtn';
 import axios from "axios";
+import { useSnackbar } from 'notistack';
 
 const TotalExpenses =() => {
     const items = useSelector((state) =>state.itemsData.itemList);
     const isPremium = useSelector((state)=>state.premium.isPremium)
     const pActive= useSelector((state)=>state.premium.preminumValue)
     const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
     let totalAmount=0;
 
+    const setAlert = (response) => {
+      enqueueSnackbar(response.message, {
+        variant: response.type === 1 ? "success" : "error",
+        anchorOrigin: { vertical: "bottom", horizontal: "right" },
+      });
+    };
+
     const token = localStorage.getItem("JWTTOKEN");
-    const userName = localStorage.getItem('username');
-    const userEmail = localStorage.getItem('email');
+    const userName = localStorage.getItem("username");
+    const userEmail = localStorage.getItem("email");
 
 
   items.map((element) => {
@@ -47,13 +56,13 @@ const TotalExpenses =() => {
     );
 
     if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
+      setAlert({message: "Razorpay SDK failed to load. Are you online?" , type: 0});
       return;
     }
 
-    const result = await axios.post("http://localhost:3000/auth/api/payment",'',{ headers: { Authorization: token } });
+    const result = await axios.post("http://localhost:3000/auth/api/payment","",{ headers: { Authorization: token } });
     if (!result) {
-      alert("Server error. Are you online?");
+      setAlert({message:"Server error. Are you online?", type: 0});
       return;
     }
 
@@ -80,8 +89,8 @@ const TotalExpenses =() => {
           data,
           { headers: { Authorization: token } }
         );
-        activatePreminum()
-        alert(result.data.msg);
+        activatePreminum();
+        setAlert({message: result.data.msg, type: 1});
       },
       prefill: {
         name: userName,
@@ -108,12 +117,18 @@ const TotalExpenses =() => {
             <div className={classes.amountdiv}>
                 <label>{totalAmount}.00</label>
             </div>
-            {true && (
+            {isPremium ? (
               <div className={classes.preminumDiv}>
-              <button className={classes.preminumBTN} onClick={displayRazorpay}>{false ? "Premium Button." : "Buy Premium Features"}</button>
-            </div>)}
-
-            {pActive && (<div className={classes.downloadBtnDiv}><CSVLink data={csvData}><button className={classes.downloadBtn}>🡇 Download File</button></CSVLink>{" "}</div>)}
+              <button className={classes.preminumBTN} onClick={displayRazorpay}> 
+              Activate Premium Features
+              </button>
+            </div>
+             ) : (
+              <div className="preminumDiv">
+                <button className="preminumBTN">Premium Member</button>
+              </div>
+             )}
+            {pActive && (<div className={classes.downloadBtnDiv}><CSVLink data={csvData}><button className={classes.downloadBtn}>🡇 Download File</button></CSVLink></div>)}
         </div>
     );
 };

@@ -1,11 +1,22 @@
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { useSnackbar } from 'notistack';
 import classes from './PasswordReset.module.css'
 
 const PasswordReset = () => {
     const [isLoading,setLoading] = useState(false);
     const emailRef = useRef();
     const history = useHistory();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const setAlert = (response) => {
+        enqueueSnackbar(response.message, {
+          variant: response.type === 1 ? "success" : "error",
+          anchorOrigin: { vertical: "bottom", horizontal: "right" },
+          preventDuplicate: true,
+        });
+      };
 
     const ResetButtonhandler= async(event) => {
         event.preventDefault();
@@ -13,35 +24,14 @@ const PasswordReset = () => {
 
         setLoading(true);
         try{
-            const response = await fetch(
-                "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBNKcwJ85YxV00sJT8V4pSH2dMBTCWv77k",
-                {
-                  method: "POST",
-                  body: JSON.stringify({
-                    requestType: "PASSWORD_RESET",
-                    email: enteredEmail,
-                    returnSecureToken: true,
-                  }),
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                }
-           )
-           if(response.ok){
-            const data = await response.json();
-            console.log(data);
-            alert(`Link successfully send to ${enteredEmail}`)
-            history.replace('/auth');
-
-           }
-           else{
-            const data = await response.json();
-            alert(data.error.message);
-           }
-           setLoading(false);
+            const response = await axios.post('http://localhost:3000/auth/user/forgotpassword', { email: enteredEmail})
+           setAlert(response.data);
+          if (response.data.url) {
+            window.open(response.data.url, '_blank', 'noopener,noreferrer');   
+            }
+          setLoading(false);
         }catch(err){
-            console.log('Something went wrong')
-            console.log(err);
+            setAlert( {message: "Something went wrong!" , type: 0})
             setLoading(false);
         }
 

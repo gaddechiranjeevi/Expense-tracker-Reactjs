@@ -7,4 +7,18 @@
     width: 100%;
     margin-top: 7%;
     padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+.footer-AboutDiv{
+    margin: 2rem;
+}
+.aboutLink{
+    text-decoration: dashed;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+.aboutLink:hover{
+    cursor: pointer;
 }

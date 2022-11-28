@@ -34,11 +34,11 @@ const NavBar = ()=>{
         <NavLink to='/welcome' className={classes.nammeclass}>Home</NavLink>
         </div>
         <div className={classes.subDivvP}>
-        <NavLink to='/expenses' className={classes.nammeclass}>Products</NavLink>
+        <NavLink to='/expenses' className={classes.nammeclass}>Expenses</NavLink>
         </div>
-        <div className={classes.subDivvA}>
-        <NavLink to='/about' className={classes.nammeclass}>About us</NavLink>
-        </div>
+        {ispremium && <div className={classes.subDivvA}>
+        <NavLink to='/report' className={classes.nammeclass}>Report</NavLink>
+        </div>}
 
         {ispremium && <div className={classes.subDivvL}>
             <NavLink to="/leadership" className={classes.nammeclass}>

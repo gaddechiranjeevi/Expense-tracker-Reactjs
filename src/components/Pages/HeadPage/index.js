@@ -40,9 +40,10 @@ const fetchExpenseHandler = (data) => {
           <div className={classes.itemheading}>
             <h3>User Expenses</h3>
           </div>
-          {expenseArray.map((ele)=>{
+          {expenseArray.length ?
+           expenseArray.map((ele)=>{
             return  <ExpenseList data={ele}/>
-          })}
+          }) : <label className={classes.noexpensetab}>No Expenses Found!</label>}
         </div>
       </div>
     </div>

@@ -9,9 +9,9 @@
 
 .headingcontainer{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    height: 20vh;
+    height: 12vh;
 }
 
 .leadershipmaincontainer {
@@ -24,7 +24,6 @@
 .subcontainer{
     display: flex;
     justify-content: flex-start;
-    /* align-items: flex-start; */
     border: solid;
     border-width: 1px;
     border-radius: .8rem;
@@ -53,17 +52,31 @@ li{
     border-width: 1px;
     margin: .5rem;
     border-radius: .8rem;
-    border-color: rgb(191, 191, 191);
-    background-color: rgb(228, 228, 228);
+    border-color: rgb(179, 132, 222);
+    background-color: aliceblue;
     height: 5ch;
 }
 .listItemDiv:hover {
     cursor: pointer;
-    border-color: rgb(171, 171, 171);
-    background-color: rgb(212, 212, 212);
+    border-color: rgb(179, 132, 222);
+    background-color: rgb(234, 226, 241);
 }
 .itemheading{
     display: flex;
     align-items: flex-start;
     justify-content: center;
+}
+.noexpensetab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-width: 1px;
+    margin: .5rem;
+    border-radius: .8rem;
+    height: 2rem;
+    border-color: rgb(234, 228, 228);
+    background-color: aliceblue;
+    color: rgb(179, 132, 222);
+    font-weight: bold;
 }
